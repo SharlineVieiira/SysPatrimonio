@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using SysPatrimonio.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<Context>
+(options =>
+options.UseNpgsql
+("server=localhost;Port=5432;user id=postgres; password=univel; database=Patrimonio"));
+
 
 var app = builder.Build();
 
