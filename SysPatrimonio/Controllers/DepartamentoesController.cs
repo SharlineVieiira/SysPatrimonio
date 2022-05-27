@@ -21,6 +21,8 @@ namespace SysPatrimonio.Controllers
         // GET: Departamentoes
         public async Task<IActionResult> Index()
         {
+
+           
               return _context.Departamentos != null ? 
                           View(await _context.Departamentos.ToListAsync()) :
                           Problem("Entity set 'Context.Departamentos'  is null.");
@@ -47,6 +49,14 @@ namespace SysPatrimonio.Controllers
         // GET: Departamentoes/Create
         public IActionResult Create()
         {
+            ViewBag.Locais = (from c in _context.Locais
+                              select new
+                              {
+                                  text = c.nomelocal,
+                                  value = c.id
+                              }).Distinct();
+
+            ViewBag.Locais2 = new SelectList(_context.Locais, "id", "nomelocal");
             return View();
         }
 

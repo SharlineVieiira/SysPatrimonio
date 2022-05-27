@@ -5,7 +5,14 @@
 }
 
 <h1>Create</h1>
+        <div class ="from-group">   
+            @*HtmlHelpers*@
+            <text> Locais</text> @Html.DropDownList("nomelocal", new SelectList(ViewBag.Locais,"value", "text"))
 
+            @*Razor*@
+            <select asp-items=@ViewBag.Locais2 name="nomelocal"></select>
+
+        </div>
 <h4>DbDepartamento</h4>
 <hr />
 <div class="row">

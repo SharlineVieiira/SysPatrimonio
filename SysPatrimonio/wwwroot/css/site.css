@@ -15,5 +15,12 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: white;
 }
 
+footer{
+    background-color: white;
+}
+header{
+    color: blue;
+}
