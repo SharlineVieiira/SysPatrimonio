@@ -22,10 +22,22 @@ namespace SysPatrimonio.Controllers
         public async Task<IActionResult> Index()
         {
 
+            List<DtoDepartamento> Lista = (from d in _context.Departamentos
+                                          join l in _context.Locais on d.idlocal equals l.id
+                                          select new DtoDepartamento
+                                          {
+                                              id = d.id,
+                                              nomedepartamento = d.nomedepartamento,
+                                              descricaodepartamento = d.descricaodepartamento,
+                                              nomelocal = l.nomelocal
+
+                                        }).ToList(); 
            
-              return _context.Departamentos != null ? 
+            return View(Lista);
+
+            /*  return _context.Departamentos != null ? 
                           View(await _context.Departamentos.ToListAsync()) :
-                          Problem("Entity set 'Context.Departamentos'  is null.");
+                          Problem("Entity set 'Context.Departamentos'  is null.");*/
         }
 
         // GET: Departamentoes/Details/5
@@ -99,6 +111,8 @@ namespace SysPatrimonio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,nomedepartamento,descricaodepartamento,idlocal")] DbDepartamento dbDepartamento)
         {
+
+
             if (id != dbDepartamento.id)
             {
                 return NotFound();

@@ -30,9 +30,10 @@
                 <span asp-validation-for="descricaodepartamento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="idlocal" class="control-label"></label>
+                <select asp-items=@ViewBag.Locais2 asp-for="idlocal" class="from-control"> </select>
+@*                <label asp-for="idlocal" class="control-label"></label>
                 <input asp-for="idlocal" class="form-control" />
-                <span asp-validation-for="idlocal" class="text-danger"></span>
+                <span asp-validation-for="idlocal" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
